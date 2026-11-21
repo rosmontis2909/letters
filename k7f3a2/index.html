@@ -19,7 +19,52 @@
     padding:6vh 18px 8vh;
   }
 
+  /* ---------- 门口 ---------- */
+  #gate{
+    position:fixed;inset:0;z-index:50;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,#f2ece1 0%,#e9e3d8 65%,#ded6c8 100%);
+    padding:24px;
+    transition:opacity .7s ease, visibility .7s;
+  }
+  #gate.gone{opacity:0;visibility:hidden}
+  .gate-box{max-width:330px;width:100%;text-align:center}
+  .gate-seal{
+    width:54px;height:54px;margin:0 auto 28px;
+    border:1px solid rgba(120,100,75,.35);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;color:#a3937b;letter-spacing:0;
+  }
+  .gate-box p{
+    margin:0 0 24px;color:#7a6f5f;font-size:15px;
+    letter-spacing:.04em;line-height:2;
+    font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  .gate-form{display:flex;gap:8px}
+  #pass{
+    flex:1;background:rgba(255,253,248,.7);
+    border:1px solid rgba(120,100,75,.25);
+    border-radius:6px;padding:11px 13px;
+    color:#2c2a27;font-size:15px;font-family:inherit;outline:none;
+    transition:border-color .25s, background .25s;
+  }
+  #pass:focus{border-color:rgba(120,100,75,.55);background:#fffdf8}
+  #pass::placeholder{color:#b3a795}
+  .gate-form button{
+    background:rgba(120,100,75,.08);border:1px solid rgba(120,100,75,.28);
+    color:#6b6252;border-radius:6px;padding:0 20px;font-size:15px;
+    font-family:inherit;cursor:pointer;transition:.25s;
+  }
+  .gate-form button:hover{background:rgba(120,100,75,.16)}
+  #hint{margin:16px 0 0;font-size:13px;color:#a35c4a;min-height:18px;
+        font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+  #hint.shake{animation:shake .4s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+  /* ---------- 信纸 ---------- */
   .paper{
+    display:none;
     max-width:660px;margin:0 auto;
     background:#fffdf8;
     padding:68px 62px 76px;
@@ -30,6 +75,8 @@
     border-radius:2px;
     position:relative;
   }
+  .paper.show{display:block;animation:fade .9s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   .paper::before{
     content:"";
     position:absolute;inset:14px;
@@ -71,7 +118,8 @@
   }
 
   .empty-tip{
-    color:#a3937b;font-size:15px;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    color:#a3937b;font-size:15px;
+    font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
     text-align:center;padding:40px 0;
   }
 
@@ -86,7 +134,20 @@
 </head>
 <body>
 
-<div class="paper">
+<!-- 门口 -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-seal">✉</div>
+    <p>这封信只写给一个人。</p>
+    <form class="gate-form" autocomplete="off">
+      <input id="pass" type="text" placeholder="口令" aria-label="口令" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <button type="submit">拆</button>
+    </form>
+    <p id="hint"></p>
+  </div>
+</div>
+
+<div class="paper" id="paper">
   <p class="stamp">2026 &nbsp;·&nbsp; 11 &nbsp;·&nbsp; 24</p>
 
   <article>
@@ -94,9 +155,48 @@
   </article>
 
   <div class="end">
-    
+
   </div>
 </div>
 
+<script>
+  (function(){
+    var KEY = "maybetheend";
+
+    var gate   = document.getElementById('gate');
+    var paper  = document.getElementById('paper');
+    var input  = document.getElementById('pass');
+    var hint   = document.getElementById('hint');
+    var form   = document.querySelector('.gate-form');
+
+    function open(){
+      gate.classList.add('gone');
+      paper.classList.add('show');
+      try{ sessionStorage.setItem('b','1'); }catch(e){}
+    }
+
+    try{
+      if(sessionStorage.getItem('b') === '1'){ open(); }
+    }catch(e){}
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var v = (input.value || '').trim();
+      if(v === KEY){
+        hint.textContent = '';
+        open();
+      }else{
+        hint.textContent = '不是这个。';
+        hint.classList.remove('shake');
+        void hint.offsetWidth;
+        hint.classList.add('shake');
+        input.value = '';
+        input.focus();
+      }
+    });
+
+    setTimeout(function(){ input.focus(); }, 400);
+  })();
+</script>
 </body>
 </html>
