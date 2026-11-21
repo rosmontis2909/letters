@@ -289,7 +289,16 @@
               if(o && o.event === 'message') got = true;
             }catch(e){}
           });
-          if(got) showRead();
+          if(got){
+            showRead();
+            // 续一下：不然十二小时后这个「点过了」自己就没了
+            try{
+              fetch('https://ntfy.sh/' + TOPIC, {
+                method: 'POST',
+                body: 'renew ' + new Date().toISOString()
+              }).catch(function(){});
+            }catch(e){}
+          }
         })
         .catch(function(){});
     }catch(e){}
