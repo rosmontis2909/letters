@@ -34,7 +34,7 @@
     border:1px solid rgba(120,100,75,.35);
     border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    font-size:20px;color:#a3937b;letter-spacing:0;
+    font-size:20px;color:#a3937b;
   }
   .gate-box p{
     margin:0 0 24px;color:#7a6f5f;font-size:15px;
@@ -93,7 +93,11 @@
     font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
   }
 
-  article p{margin:0 0 1.5em;font-size:17px;letter-spacing:.01em}
+  article p{
+    margin:0 0 1.5em;font-size:17px;letter-spacing:.01em;
+    text-indent:2em;
+  }
+  article p:first-child{text-indent:0}
   article p:last-child{margin-bottom:0}
 
   article blockquote{
@@ -101,7 +105,7 @@
     border-left:2px solid rgba(163,147,123,.35);
     color:#57514a;font-size:16.5px;
   }
-  article blockquote p{margin:0 0 .8em;font-size:16.5px}
+  article blockquote p{margin:0 0 .8em;font-size:16.5px;text-indent:0}
   article blockquote p:last-child{margin-bottom:0}
 
   article hr{
@@ -118,9 +122,29 @@
   }
 
   .empty-tip{
-    color:#a3937b;font-size:15px;
+    color:#a3937b;font-size:15px;text-indent:0;
     font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
     text-align:center;padding:40px 0;
+  }
+
+  /* ---------- 看完那一栏 ---------- */
+  .seen{
+    margin:3.6em 0 0;padding-top:2em;
+    border-top:1px solid rgba(120,100,75,.13);
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  #seenBtn{
+    background:rgba(120,100,75,.07);
+    border:1px solid rgba(120,100,75,.26);
+    color:#6b6252;border-radius:6px;
+    padding:9px 20px;font-size:14px;font-family:inherit;
+    cursor:pointer;transition:.25s;white-space:nowrap;
+  }
+  #seenBtn:hover{background:rgba(120,100,75,.15);border-color:rgba(120,100,75,.4)}
+  #seenBtn:disabled{cursor:default;opacity:.75}
+  .seen-note{
+    font-size:13.5px;color:#8c8171;line-height:1.8;flex:1;min-width:180px;
   }
 
   @media (max-width:680px){
@@ -151,17 +175,39 @@
   <p class="stamp">2026 &nbsp;·&nbsp; 11 &nbsp;·&nbsp; 24</p>
 
   <article>
-    <p>测试</p>
+    <p>给 懒人枫叶：</p>
+    <p>结果还是没法直呼你的名字来写这封信啊，好久不见</p>
+    <p>我为什么要写这封信呢，实话说我也不知道，大概只是想写而已，所以我可能会有点语无伦次，或者没有重点逻辑不清什么的，但我还是想写给你</p>
+    <p>也大概是做个了结吧，给高中这几年做个了结，或许也是给这12年。我不是想做那种文学作品里斩断过去之类的了解，我大概只是想放下对这段关系的纠结。其实那天之后我想着让你冷静几天就去找你，但是我最后放弃了，因为那几天里我想了不少，想到最后不敢去找你了，因为我发现自己好像很可恶啊，我也是个懦弱的人吧。现在回看那天我说的话，大概无比傲慢吧，陪你一起什么的，好像完全是站在你的上面，我一直想着尽力避免在这种听起来似乎高高在上的话，虽然可能是我觉得，但看来我本性就是这样</p>
+    <p>好像已经偏了呢，不过不改了，我想了之后怀疑我潜意识里是不是有一种白骑士心理，想救你什么的，又想到过去几年里和你聊天，好像我潜意识里确实藏有一点这种心理，所以说不能忍受似乎也是必然的事</p>
+    <p>我可能并没有想那么多，我只是在看到你有烦恼的时候还愿意和我说，所以也想给你回应吧，我学的那些杂七杂八的东西，能帮到你，你也可以视为一种显摆？我骨子里可是很希望被别人注视的啊。但我也是很自私的吧，你找我玩mc，我拒绝了，也就是因为我不想玩（我好像并没有特意为了陪谁而去玩什么（我没有想太多（我只是遵从本心地和你相处</p>
+    <p>说回来吧，我觉得能以这种闹剧收尾我们俩都是有些问题的，或者说，对对方的定位不同？我会把你当作老友，实际也确实是，但我的意思是，我会尽力帮你解决我能解决的问题，和你聊天之类的，我就是你的一个正常朋友，但我好像并没有办法承受住那么重的依赖。你当时说我是你唯一确定能重视的人了，我当时大概有些不知道怎么回答吧，因为我们的实际话题应该，算很少吧，所以似乎并没有太多能聊的，到结果上看起来大概就是，我对你爱搭不理？一般不会主动找你什么的，但我真的没有说轻视你什么的。在这种情况下大概高二的时候我就意识到再这样下去总有一天会爆的，只不过比我想的早很多，那几天我和我别的朋友聊过一些，征求一些看法，有个朋友说我应该从中间发现之后就开始慢慢抽离，到最后不至于一下爆开，不过我好像做不到，我没法看着你倒出的烦恼敷衍，如果是别人我可能会不想聊那些烦恼，但对你好像没有过。不过从某种意义上来说，你说的“可有可无”大概也是对的吧，至少明面上看起来可能确实有点像，大概也是让你觉得我完全不重视你的原因吧，因为在我的视角，在我的潜意识里可能是觉得两人应该各有各的生活，有话题就聊聊，没事玩玩这样，而不是说在没话题的情况下也必须要贴着对方。有点傲慢地说一句，你可能是怕我淡了走远了？或者也可能是单纯想跟我说话吧（虽然会有点说教的意味，但我还是想说这样不太行，我们可能就到这了，但你还得往下走，最后不能由某个人完全地把你撑起来，你可以依靠别人，但不能完全把自己都压在那个人身上，或者至少得是能和你过完一生的人，我大概不是吧，我又不是女的，我也不是gay（</p>
+    <p>......我在写什么（完全没逻辑啊（</p>
+    <p>后来我想了想，感觉，断了好像也挺好吧，我觉得我们的关系并不是很健康的，我留下来说不定对你反而会有继续维持现状的负面作用呢，说不定我离开你才能走出来</p>
+    <p>顺便说一句，其实我qq绝大部分人都是免打扰状态，那天我在打游戏，中间闲下来才看到你的信息，之前回的不及时也是同理（不过这大概是一种找补，毕竟是积累那么久才迎来的爆发</p>
+    <p>我本来想去booth买一个模送给你，但发现我一不知道你的booth账号，二不知道你喜欢什么样的，也只能在steam上了</p>
+    <p>我之前翻了翻你steam的档案，发现了大概是你vrc里交到的朋友留的言，有烦恼的时候多找找他们吧，别憋着了，每次我看你说着不想天天给我灌输负能量我都感觉莫名，为什么总是想着会给别人添麻烦呢，朋友不就是用来添麻烦的吗，没有能不让人担心不给人添麻烦的人生啊，既然人生下来就会添麻烦，那就尽量增加能添麻烦的人吧，平日里不给别人添不必要的麻烦就是了，当然你可能会说这就是不必要的麻烦，不过我不这么觉得，自己能比较容易解决却也推给别人的才叫不必要的麻烦</p>
+    <p>写完这封信，我或许就可以不想这件事了吧，我大概可以放下来了，如果你已经放下这档子事了，那我会很高兴的；如果没有的话，也请放下来吧，不过别把我忘了，不然我csn（不要留我一个记着这些东西（我希望以后你想起我记起来的是有趣的事情，回忆里塞的是愉快的东西，而不是继续纠结这档子事，或者如果你想不起来什么愉快的东西，那还是把我忘了吧（那我就是一直在自作多情了</p>
+    <p>阿姨当时让我多找找你，大概是做不到了，不过我还是希望你能期待以后的生活，如果现实生活让你拿不出期待，那就去别的地方找吧，不管是网络上还是现实里的其他部分，既然不管你开不开心时间都是一样的流，那为什么不想办法让自己开心一点呢，你总说没兴趣，那去稍微多尝试一些别的东西吧，但凡能让自己有一点愉快都是好的，虽然我好像也没有太多的兴趣（</p>
+    <p>万一我之后买vr了，说不定你能在vrc里见到我呢，假如真有那一天的话，和我打个招呼吧</p>
+    <p>就到这里吧，写的很乱，原谅我吧，写之前想到很多，真的开始写了反而不知道怎么写了，但还是写完了，虽然大概写完就会开始后悔自己写的一些东西，但既然我当时想到了，那就不删了吧</p>
+    <p>不说什么天天开心生活愉快了，大概做不到，给我好好生活好好吃饭</p>
   </article>
 
   <div class="end">
+——依-绫-言-黎<br>2026.11.21
+  </div>
 
+  <div class="seen">
+    <button id="seenBtn" type="button">看完了</button>
+    <span class="seen-note" id="seenNote">如果你看到这里了，就点一下吧，这样我就安心了</span>
   </div>
 </div>
 
 <script>
   (function(){
-    var KEY = "lanrenfengye";
+    // 口令：两个都认
+    var KEYS = ["lanrenfengye", "lijinyue"];
 
     var gate   = document.getElementById('gate');
     var paper  = document.getElementById('paper');
@@ -182,7 +228,7 @@
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       var v = (input.value || '').trim();
-      if(v === KEY){
+      if(KEYS.indexOf(v) !== -1){
         hint.textContent = '';
         open();
       }else{
@@ -196,6 +242,24 @@
     });
 
     setTimeout(function(){ input.focus(); }, 400);
+
+    // ---- 看完那一下 ----
+    var TOPIC = "fengye-read-9d2x";
+    var btn   = document.getElementById('seenBtn');
+    var note  = document.getElementById('seenNote');
+
+    btn.addEventListener('click', function(){
+      btn.disabled = true;
+      btn.textContent = '好，我看到了';
+      note.textContent = '谢谢你读到这里。';
+
+      try{
+        fetch('https://ntfy.sh/' + TOPIC, {
+          method: 'POST',
+          body: 'read ' + new Date().toISOString()
+        }).catch(function(){});
+      }catch(e){}
+    });
   })();
 </script>
 </body>
