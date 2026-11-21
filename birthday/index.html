@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>一封信</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:#e9e3d8;
+    background-image:radial-gradient(1200px 600px at 50% -20%, #f2ece1 0%, #e9e3d8 45%, #ded6c8 100%);
+    background-attachment:fixed;
+    color:#2c2a27;
+    font-family:Georgia,"Source Han Serif SC","Noto Serif CJK SC","Songti SC",SimSun,serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:2.05;
+    padding:6vh 18px 8vh;
+  }
+
+  .paper{
+    max-width:660px;margin:0 auto;
+    background:#fffdf8;
+    padding:68px 62px 76px;
+    box-shadow:
+      0 1px 1px rgba(80,60,40,.06),
+      0 8px 24px rgba(80,60,40,.08),
+      0 30px 70px -20px rgba(80,60,40,.16);
+    border-radius:2px;
+    position:relative;
+  }
+  .paper::before{
+    content:"";
+    position:absolute;inset:14px;
+    border:1px solid rgba(120,100,75,.10);
+    pointer-events:none;
+  }
+
+  .stamp{
+    text-align:right;
+    font-size:12.5px;
+    letter-spacing:.18em;
+    color:#a3937b;
+    margin:0 0 46px;
+    font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+
+  article p{margin:0 0 1.5em;font-size:17px;letter-spacing:.01em}
+  article p:last-child{margin-bottom:0}
+
+  article blockquote{
+    margin:2em 0;padding:0 0 0 20px;
+    border-left:2px solid rgba(163,147,123,.35);
+    color:#57514a;font-size:16.5px;
+  }
+  article blockquote p{margin:0 0 .8em;font-size:16.5px}
+  article blockquote p:last-child{margin-bottom:0}
+
+  article hr{
+    border:0;height:1px;background:rgba(120,100,75,.16);
+    margin:2.8em auto;width:38%;
+  }
+
+  .end{
+    margin:3.4em 0 0;
+    text-align:right;
+    font-size:16.5px;
+    color:#3a3630;
+    line-height:1.9;
+  }
+
+  .empty-tip{
+    color:#a3937b;font-size:15px;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    text-align:center;padding:40px 0;
+  }
+
+  @media (max-width:680px){
+    body{padding:0 0 40px}
+    .paper{padding:44px 26px 56px;box-shadow:none;border-radius:0}
+    .paper::before{inset:10px}
+    article p{font-size:16.5px}
+    .stamp{margin-bottom:32px}
+  }
+</style>
+</head>
+<body>
+
+<div class="paper">
+  <p class="stamp">2026 &nbsp;·&nbsp; 11 &nbsp;·&nbsp; 24</p>
+
+  <article>
+    <p>测试</p>
+  </article>
+
+  <div class="end">
+    
+  </div>
+</div>
+
+</body>
+</html>
