@@ -1,0 +1,42 @@
+name: 固定已读状态
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 已经固定过就跳过
+        id: gate
+        run: |
+          if [ -f maybetheend/read.json ]; then
+            echo "done=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "done=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 去频道里看看有没有人点过
+        if: steps.gate.outputs.done == '0'
+        run: |
+          set +e
+          DATA=$(curl -s --max-time 20 "https://ntfy.sh/fengye-read-9d2x/json?poll=1&since=all")
+          if echo "$DATA" | grep -q '"message":"read'; then
+            mkdir -p maybetheend
+            printf '{"read":true,"at":"%s"}\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > maybetheend/read.json
+            git config user.name "read-bot"
+            git config user.email "read-bot@users.noreply.github.com"
+            git add maybetheend/read.json
+            git commit -m "把那封信的已读状态固定下来"
+            git push
+            echo "固定成功"
+          else
+            echo "还没人点，先不动"
+          fi
