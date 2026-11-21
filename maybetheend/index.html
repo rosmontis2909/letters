@@ -146,6 +146,14 @@
   .seen-note{
     font-size:13.5px;color:#8c8171;line-height:1.8;flex:1;min-width:180px;
   }
+  #seenPic{
+    width:190px;max-width:100%;flex-basis:100%;
+    display:block;margin:20px 0 0;
+    border-radius:6px;
+    opacity:0;
+    transition:opacity 1s ease;
+  }
+  #seenPic.show{opacity:1}
 
   @media (max-width:680px){
     body{padding:0 0 40px}
@@ -201,6 +209,7 @@
   <div class="seen">
     <button id="seenBtn" type="button">看完了</button>
     <span class="seen-note" id="seenNote">如果你看到这里了，就点一下吧，这样我就安心了</span>
+    <img id="seenPic" src="assets/read.jpg" alt="" hidden>
   </div>
 </div>
 
@@ -247,12 +256,18 @@
     var TOPIC = "fengye-read-9d2x";
     var btn   = document.getElementById('seenBtn');
     var note  = document.getElementById('seenNote');
+    var pic   = document.getElementById('seenPic');
 
-    btn.addEventListener('click', function(){
+    function showRead(){
       btn.disabled = true;
       btn.textContent = '好，我看到了';
       note.textContent = '谢谢你读到这里。';
+      pic.hidden = false;
+      requestAnimationFrame(function(){ pic.classList.add('show'); });
+    }
 
+    btn.addEventListener('click', function(){
+      showRead();
       try{
         fetch('https://ntfy.sh/' + TOPIC, {
           method: 'POST',
@@ -260,6 +275,24 @@
         }).catch(function(){});
       }catch(e){}
     });
+
+    // 打开时问一句：是不是有人已经点过了
+    try{
+      fetch('https://ntfy.sh/' + TOPIC + '/json?poll=1&since=all')
+        .then(function(r){ return r.text(); })
+        .then(function(txt){
+          var got = false;
+          txt.split('\n').forEach(function(line){
+            if(!line.trim()) return;
+            try{
+              var o = JSON.parse(line);
+              if(o && o.event === 'message') got = true;
+            }catch(e){}
+          });
+          if(got) showRead();
+        })
+        .catch(function(){});
+    }catch(e){}
   })();
 </script>
 </body>
